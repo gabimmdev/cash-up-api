@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import com.cash.up.cash_up_api.model.Transaction;
 
-public class TransactionRepository {
+public interface TransactionRepository extends JpaRepository<Transaction, Long>, JpaSpecificationExecutor<Transaction>{
     // List<Transaction> findByDescriptionContainingIgnoringCase(String
     // description); // Query Methods
 
