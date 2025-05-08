@@ -21,4 +21,17 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TransactionController {
     
+    public record TransactionFilter(String description, LocalDate startDate, LocalDate endDate) {
+    }
+
+    @Autowired
+    private TransactionRepository repository;
+
+    @GetMapping
+    public Page<Transaction> index(TransactionFilter filter,
+            @PageableDefault(size = 10, sort = "date", direction = Direction.DESC) Pageable pageable) {
+        var specification = TransactionSpecification.withFilters(filter);
+        return repository.findAll(specification, pageable);
+    }
+
 }
