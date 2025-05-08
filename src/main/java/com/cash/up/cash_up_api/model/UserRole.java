@@ -1,5 +1,5 @@
 package com.cash.up.cash_up_api.model;
 
-public class UserRole {
+public enum UserRole {
     ADMIN, USER
 }
