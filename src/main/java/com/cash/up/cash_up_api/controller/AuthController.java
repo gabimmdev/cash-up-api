@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cash.up.cash_up_api.model.Credentials;
 import com.cash.up.cash_up_api.model.Token;
 import com.cash.up.cash_up_api.service.AuthService;
-import com.cash.up.cash_up_api.service.TokenService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
