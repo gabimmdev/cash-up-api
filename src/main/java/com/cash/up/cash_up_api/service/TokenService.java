@@ -3,21 +3,31 @@ package com.cash.up.cash_up_api.service;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
-import com.cash.up.cash_up_api.model.Credentials;
 import com.cash.up.cash_up_api.model.Token;
 import com.cash.up.cash_up_api.model.User;
 import com.cash.up.cash_up_api.model.UserRole;
 
+import jakarta.annotation.PostConstruct;
+
 @Service
 public class TokenService {
 
-    private final Long DURATION = 10L; // 10 minutes
-    private final Algorithm ALG = Algorithm.HMAC256("secret");
+    private final Long DURATION = 120L; // 10 minutes
+    private Algorithm ALG;
+
+    @Value("${jwt.secret}")
+    private String secret;
+
+    @PostConstruct
+    public void init(){
+        ALG = Algorithm.HMAC256(secret);
+    }
 
     public Token createToken(User user){
         var token = JWT.create()
