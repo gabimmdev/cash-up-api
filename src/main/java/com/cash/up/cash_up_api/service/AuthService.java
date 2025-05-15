@@ -2,7 +2,6 @@ package com.cash.up.cash_up_api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.token.TokenService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,7 +14,7 @@ import com.cash.up.cash_up_api.repository.UserRepository;
 
 @Service
 public class AuthService implements UserDetailsService {
-    
+
     @Autowired
     private UserRepository repository;
 
